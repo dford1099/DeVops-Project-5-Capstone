@@ -2,13 +2,8 @@ package com.fthiago.customer.customer;
 
 public class Customer {
 
-    private long id;
     private String name;
     private String address;
-
-    public long getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
