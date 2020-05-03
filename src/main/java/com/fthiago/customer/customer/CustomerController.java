@@ -1,4 +1,4 @@
-package com.fthiago.customer.controller;
+package com.fthiago.customer.customer;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,7 @@
-package com.fthiago.customer.controller;
+package com.fthiago.customer.customer;
 
 public class Customer {
+
     private long id;
     private String name;
     private String address;
