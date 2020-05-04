@@ -22,4 +22,8 @@ public class CustomerService {
     public boolean delete(long id) {
         return true;
     }
+
+    public Optional<Customer> update(Long id, Customer customer) {
+        return Optional.empty();
+    }
 }
