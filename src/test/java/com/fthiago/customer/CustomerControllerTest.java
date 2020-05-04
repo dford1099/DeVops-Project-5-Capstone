@@ -19,8 +19,7 @@ import java.util.Optional;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -72,6 +71,30 @@ public class CustomerControllerTest {
         mockMvc.perform(get("/customers/{id}", 1))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    @DisplayName("DELETE /customers/1 - Success")
+    void testDeleteCustomerByIdFound() throws Exception {
+        Customer mockedCustomer = new Customer(1, "Customer Name", "Customer Address");
+
+        // Mocked services
+        doReturn(Optional.of(mockedCustomer)).when(service).getById(1);
+        doReturn(true).when(service).delete(1);
+
+        mockMvc.perform(delete("/customers/{id}", 1))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("DELETE /customers/1 - Not Found")
+    void testDeleteCustomerByIdNotFound() throws Exception {
+        // Mocked services
+        doReturn(Optional.of(false)).when(service).getById(1);
+
+        mockMvc.perform(delete("/customers/{id}", 1))
+                .andExpect(status().isNotFound());
+    }
+
 
     static String asJsonString(final Object obj) {
         try {

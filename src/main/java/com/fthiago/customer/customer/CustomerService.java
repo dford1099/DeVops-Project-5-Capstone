@@ -8,14 +8,18 @@ import java.util.Optional;
 public class CustomerService {
 
     public Optional<Customer> createCustomer(Customer customer) {
-        return null;
+        return Optional.empty();
     }
 
     public Optional<Customer> getById(long id) {
-        return null;
+        return Optional.empty();
     }
 
     public Optional<Customer> save(Customer customer) {
-        return null;
+        return Optional.empty();
+    }
+
+    public boolean delete(long id) {
+        return true;
     }
 }
