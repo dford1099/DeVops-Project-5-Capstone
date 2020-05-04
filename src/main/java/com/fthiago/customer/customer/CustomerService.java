@@ -14,4 +14,8 @@ public class CustomerService {
     public Optional<Customer> getById(long id) {
         return null;
     }
+
+    public Optional<Customer> save(Customer customer) {
+        return null;
+    }
 }

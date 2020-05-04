@@ -6,6 +6,9 @@ public class Customer {
     private String name;
     private String address;
 
+    public Customer() {
+    }
+
     public Customer(String name, String address) {
         this.name = name;
         this.address = address;
@@ -19,6 +22,10 @@ public class Customer {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
