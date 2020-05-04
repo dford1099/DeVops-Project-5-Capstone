@@ -24,8 +24,9 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Customer>> getCustomer(@PathVariable long id) {
-        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
+    public ResponseEntity<Customer> getCustomer(@PathVariable long id) {
+        Optional<Customer> c = this.service.getById(id);
+        return c.map(customer -> new ResponseEntity<>(customer, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
 
 }
