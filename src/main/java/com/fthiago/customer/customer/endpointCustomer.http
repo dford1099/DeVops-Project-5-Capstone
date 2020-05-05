@@ -1,0 +1,9 @@
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Customer Name",
+  "address": "Address Info"
+}
+
+###
