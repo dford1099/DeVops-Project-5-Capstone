@@ -8,25 +8,31 @@ import java.util.Optional;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    private final CustomerRepository repository;
+
+    public CustomerServiceImpl(CustomerRepository repository) {
+        this.repository = repository;
+    }
+
 
     @Override
     public Optional<Customer> findById(Long id) {
-        return Optional.empty();
+        return repository.findById(id);
     }
 
     @Override
     public List<Customer> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public boolean update(Customer customer) {
-        return false;
+        return repository.update(customer);
     }
 
     @Override
     public Customer save(Customer customer) {
-        return null;
+        return repository.save(customer);
     }
 
     @Override
