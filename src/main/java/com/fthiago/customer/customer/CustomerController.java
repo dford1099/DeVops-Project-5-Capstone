@@ -40,10 +40,11 @@ public class CustomerController {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id,
                                                    @RequestBody Customer customer) {
-        Optional<Customer> c = service.update(id, customer);
+        Optional<Customer> c = service.getById(id);
+
         return c.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }

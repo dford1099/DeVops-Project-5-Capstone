@@ -95,6 +95,22 @@ public class CustomerControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @Test
+    @DisplayName("PUT /customers/1 - Not Found")
+    void testUpdateCustomerByIdNotFound() throws Exception {
+
+        Customer putCustomer = new Customer("Customer Name Updated", "Customer Address Updated");
+        Customer mockedCustomer = new Customer(1, "Customer Name", "Customer Address");
+        // Mocked services
+        doReturn(Optional.of(mockedCustomer)).when(service).getById(1);
+
+        mockMvc.perform(put("/customers/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(mockedCustomer)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.name", is("Customer Name")));
+    }
 
     static String asJsonString(final Object obj) {
         try {
