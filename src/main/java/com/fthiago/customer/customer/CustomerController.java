@@ -19,14 +19,14 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Optional<Customer>> postCustomer(@RequestBody Customer customer) {
-        Optional<Customer> c = service.save(customer);
+    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
+        Customer c = service.save(customer);
         return new ResponseEntity<>(c, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable long id) {
-        Optional<Customer> c = service.getById(id);
+        Optional<Customer> c = service.findById(id);
         return c.map(customer -> new ResponseEntity<>(customer, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
@@ -43,7 +43,7 @@ public class CustomerController {
     @PutMapping("/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id,
                                                    @RequestBody Customer customer) {
-        Optional<Customer> c = service.getById(id);
+        Optional<Customer> c = service.findById(id);
 
         return c.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));

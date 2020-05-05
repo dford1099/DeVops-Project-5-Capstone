@@ -39,7 +39,7 @@ public class CustomerControllerTest {
     void testPostNewCustomer() throws Exception {
         Customer postCustomer = new Customer("Customer Name", "Customer Address");
         Customer mockedCustomer = new Customer(1, "Customer Name", "Customer Address");
-        doReturn(Optional.of(mockedCustomer)).when(service).save(any());
+        doReturn(mockedCustomer).when(service).save(any());
 
         mockMvc.perform(post("/customers")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -55,7 +55,7 @@ public class CustomerControllerTest {
     @DisplayName("GET /customers/1 - Found")
     void testGetCustomerByIdFound() throws Exception {
         Customer mockedCustomer = new Customer(1, "Customer Name", "Customer Address");
-        doReturn(Optional.of(mockedCustomer)).when(service).getById(1);
+        doReturn(Optional.of(mockedCustomer)).when(service).findById(1L);
 
         mockMvc.perform(get("/customers/{id}", 1))
                 .andExpect(status().isOk())
@@ -66,7 +66,7 @@ public class CustomerControllerTest {
     @Test
     @DisplayName("GET /customers/1 - Not Found")
     void testGetCustomerByIdNotFound() throws Exception {
-        doReturn(Optional.empty()).when(service).getById(1);
+        doReturn(Optional.empty()).when(service).findById(1L);
 
         mockMvc.perform(get("/customers/{id}", 1))
                 .andExpect(status().isNotFound());
@@ -78,8 +78,8 @@ public class CustomerControllerTest {
         Customer mockedCustomer = new Customer(1, "Customer Name", "Customer Address");
 
         // Mocked services
-        doReturn(Optional.of(mockedCustomer)).when(service).getById(1);
-        doReturn(true).when(service).delete(1);
+        doReturn(Optional.of(mockedCustomer)).when(service).findById(1L);
+        doReturn(true).when(service).delete(1L);
 
         mockMvc.perform(delete("/customers/{id}", 1))
                 .andExpect(status().isOk());
@@ -89,7 +89,7 @@ public class CustomerControllerTest {
     @DisplayName("DELETE /customers/1 - Not Found")
     void testDeleteCustomerByIdNotFound() throws Exception {
         // Mocked services
-        doReturn(Optional.of(false)).when(service).getById(1);
+        doReturn(Optional.of(false)).when(service).findById(1L);
 
         mockMvc.perform(delete("/customers/{id}", 1))
                 .andExpect(status().isNotFound());
@@ -102,7 +102,7 @@ public class CustomerControllerTest {
         Customer putCustomer = new Customer("Customer Name Updated", "Customer Address Updated");
         Customer mockedCustomer = new Customer(1, "Customer Name", "Customer Address");
         // Mocked services
-        doReturn(Optional.of(mockedCustomer)).when(service).getById(1);
+        doReturn(Optional.of(mockedCustomer)).when(service).findById(1L);
 
         mockMvc.perform(put("/customers/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)

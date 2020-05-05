@@ -1,29 +1,14 @@
 package com.fthiago.customer.customer;
 
-import org.springframework.stereotype.Service;
-
+import java.util.List;
 import java.util.Optional;
 
-@Service
-public class CustomerService {
+public interface CustomerService {
 
-    public Optional<Customer> createCustomer(Customer customer) {
-        return Optional.empty();
-    }
+    Optional<Customer> findById(Long id);
+    List<Customer> findAll();
+    boolean update(Customer customer);
+    Customer save(Customer customer);
+    boolean delete(Long id);
 
-    public Optional<Customer> getById(long id) {
-        return Optional.empty();
-    }
-
-    public Optional<Customer> save(Customer customer) {
-        return Optional.empty();
-    }
-
-    public boolean delete(long id) {
-        return true;
-    }
-
-    public Optional<Customer> update(Long id, Customer customer) {
-        return Optional.empty();
-    }
 }
