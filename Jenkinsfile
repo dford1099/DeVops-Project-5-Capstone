@@ -11,7 +11,7 @@ pipeline {
 
             steps {
                 echo 'Hello, Linting'
-                sh 'handolint < Dockerfile>'
+                sh 'handolint < Dockerfile'
             }
         }
     }
