@@ -1,27 +1,24 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent { docker 'hadolint/hadolint' }
     stages {
-        stage('Testing') {
+        stage('Example Build') {
+            agent {
+                docker {
+                    image 'maven:3-alpine'
+                    args '-v /root/.m2:/root/.m2'
+                }
+            }
             steps {
-                echo 'Running Testing'
-                sh 'mvn test'
+                echo 'Hello, Maven'
+                sh 'mvn --version'
             }
         }
-        stage('Linting') {
+        stage('Linting Test') {
+
             steps {
-                echo 'Running Linting'
+                echo 'Hello, Linting'
+                sh 'ls'
                 sh 'hadolint Dockerfile'
-            }
-        }
-        stage('Packing') {
-            steps {
-                echo 'Packing'
-                sh 'mvn clean package'
             }
         }
     }
