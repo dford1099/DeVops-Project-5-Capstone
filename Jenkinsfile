@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Linting') {
              steps {
-                sh 'test.sh'
+                ls
              }
         }
         stage('Package') {
