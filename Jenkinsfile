@@ -4,19 +4,19 @@ pipeline {
         stage('Testing') {
             steps {
                 echo 'Running Testing'
-                'mvn test'
+                sh 'mvn test'
             }
         }
         stage('Linting') {
             steps {
                 echo 'Running Linting'
-                'hadolint Dockerfile'
+                sh 'hadolint Dockerfile'
             }
         }
         stage('Packing') {
             steps {
                 echo 'Packing'
-                'mvn clean package'
+                sh 'mvn clean package'
             }
         }
     }
