@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Hello, Linting'
                 sh 'ls'
-                sh 'hadolint < Dockerfile'
+                sh 'hadolint Dockerfile'
             }
         }
     }
