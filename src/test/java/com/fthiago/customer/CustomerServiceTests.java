@@ -39,4 +39,10 @@ class CustomerServiceTests {
         Assertions.assertSame(returnedProduct.get(), mockCustomer, "Customers should be the same");
     }
 
+    @Test
+    @DisplayName("Failed test")
+    void testFindByIdFail() {
+//        Assertions.fail("Customer was not found");
+    }
+
 }
