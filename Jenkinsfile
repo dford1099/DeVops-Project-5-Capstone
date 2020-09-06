@@ -10,7 +10,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Linting') {
+        stage('Linting 2') {
              steps {
                 ls
              }
@@ -20,5 +20,6 @@ pipeline {
                 sh 'mvn package'
             }
         }
+    }
   }
 }
