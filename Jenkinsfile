@@ -1,18 +1,21 @@
 pipeline {
-    agent { docker 'hadolint/hadolint' }
     stages {
-        stage('Example Build') {
+        stage('Testing') {
             steps {
-                echo 'Hello, Maven'
-//                 sh 'mvn --version'
+                echo 'Running Testing'
+                sh 'mvn test'
             }
         }
-        stage('Linting Test') {
-
+        stage('Linting') {
             steps {
-                echo 'Hello, Linting'
-                sh 'ls'
+                echo 'Running Linting'
                 sh 'hadolint Dockerfile'
+            }
+        }
+        stage('Packing') {
+            steps {
+                echo 'Packing'
+                sh 'mvn clean package'
             }
         }
     }
