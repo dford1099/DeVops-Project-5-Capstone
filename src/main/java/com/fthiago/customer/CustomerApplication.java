@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerApplication {
 
+    private final String name = "";
     public static void main(String[] args) {
         SpringApplication.run(CustomerApplication.class, args);
     }
@@ -19,6 +20,5 @@ public class CustomerApplication {
     public ResponseEntity<String> getHello() {
         return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
     }
-
 
 }

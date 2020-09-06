@@ -11,6 +11,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('Linting') {
+             steps {
+                sh 'test.sh'
+             }
+        }
         stage('Package') {
             steps {
                 sh 'mvn package'
