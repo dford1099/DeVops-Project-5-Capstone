@@ -15,7 +15,7 @@ pipeline {
         stage('Linting') {
             steps {
                 echo 'Running Linting'
-                sh 'hadolint Dockerfile'
+                'hadolint Dockerfile'
             }
         }
         stage('Packing') {
