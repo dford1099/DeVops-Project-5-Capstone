@@ -20,5 +20,11 @@ pipeline {
                 sh 'java -version'
             }
         }
+        stage('Linting Dockerfile') {
+            agent { docker 'hadolint/hadolint' }
+            steps {
+                sh 'hadolint Dockerfile'
+            }
+        }
     }
 }
