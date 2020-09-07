@@ -18,20 +18,21 @@ pipeline {
 
         stage('Testing') {
             steps {
-                echo 'mvn clean test'
+                sh 'mvn clean test'
             }
         }
+
         stage('Linting') {
             steps {
-                echo 'Hello, Linting'
-                sh 'ls'
                 sh 'hadolint Dockerfile'
             }
         }
+
         stage('Deployment') {
             steps {
                 echo 'Hello, Deployment'
             }
         }
+
     }
 }
