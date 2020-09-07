@@ -4,9 +4,6 @@ pipeline {
           image 'maven:3-alpine'
           args '-v $HOME/.m2:/root/.m2'
        }
-       docker {
-          image 'hadolint/hadolint'
-       }
     }
     stages {
 
@@ -24,6 +21,11 @@ pipeline {
 //         }
 //
         stage('Linting') {
+            agent {
+               docker {
+                  image 'hadolint/hadolint'
+               }
+            }
             steps {
                 sh 'hadolint Dockerfile'
             }
