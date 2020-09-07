@@ -25,7 +25,7 @@ pipeline {
 
         stage('Deployment') {
             steps {
-                sh 'docker --version'
+                sh 'mvn --version'
             }
         }
 
