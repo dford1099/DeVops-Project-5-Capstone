@@ -1,8 +1,5 @@
 pipeline {
     agent { docker 'hadolint/hadolint' }
-    tools {
-        maven 'apache-maven-3.6.0'
-    }
     stages {
         stage ('Initialize') {
             steps {
