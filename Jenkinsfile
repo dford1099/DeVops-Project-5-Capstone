@@ -18,7 +18,7 @@ pipeline {
 
         stage('Testing') {
             steps {
-                sh 'mvn clean test'
+                echo 'mvn clean test'
             }
         }
 
@@ -31,6 +31,7 @@ pipeline {
         stage('Deployment') {
             steps {
                 echo 'Hello, Deployment'
+                sh 'aws --version'
             }
         }
 
