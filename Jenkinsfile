@@ -10,7 +10,7 @@ pipeline {
         stage('Testing') {
             agent { docker 'maven:3-alpine' }
             steps {
-                sh 'mvn test'
+                sh './scripts/testing.sh'
             }
         }
 
