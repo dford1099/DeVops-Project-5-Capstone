@@ -31,7 +31,6 @@ pipeline {
         stage('Deployment') {
             steps {
                 echo 'Hello, Deployment'
-                sh 'aws --version'
             }
         }
 
