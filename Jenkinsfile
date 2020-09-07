@@ -6,6 +6,11 @@ pipeline {
                 echo 'Hello, Maven'
             }
         }
+        stage('Testing') {
+            steps {
+                echo 'mvn clean test'
+            }
+        }
         stage('Linting') {
             steps {
                 echo 'Hello, Linting'
