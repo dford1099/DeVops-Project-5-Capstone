@@ -1,11 +1,24 @@
 pipeline {
     agent { docker 'hadolint/hadolint' }
+    tools {
+        maven 'Maven 3.6.0'
+    }
     stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Hello, Maven'
             }
         }
+
         stage('Testing') {
             steps {
                 sh 'mvn clean test'
