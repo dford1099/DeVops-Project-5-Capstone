@@ -14,7 +14,6 @@ pipeline {
         }
 
         stage('Testing') {
-            agent { docker 'hadolint/hadolint' }
             steps {
                 sh 'mvn clean test'
             }
