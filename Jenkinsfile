@@ -1,8 +1,5 @@
 pipeline {
     agent { docker 'hadolint/hadolint' }
-    tools {
-        maven 'Maven 3.6.0'
-    }
     stages {
 
         stage('Build') {
@@ -12,8 +9,14 @@ pipeline {
         }
 
         stage('Testing') {
+            agent {
+                docker {
+                    image 'maven:3-alpine'
+                    args '-v $HOME/.m2:/root/.m2'
+                }
+            }
             steps {
-                echo 'mvn clean test'
+                sh 'mvn clean test'
             }
         }
 
