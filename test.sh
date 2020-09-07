@@ -1,1 +1,1 @@
-mvn test
+mvn clean test
