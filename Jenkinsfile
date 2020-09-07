@@ -22,6 +22,12 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                sh './test.sh'
+            }
+        }
+
         stage('Linting') {
             steps {
                 sh 'hadolint Dockerfile'
