@@ -27,7 +27,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'export /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.6.0/bin'
+                sh 'export MAVEN=/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.6.0/bin'
                 sh './test.sh'
             }
         }
