@@ -1,11 +1,16 @@
 pipeline {
     agent none
     stages {
-        stage('Example Build') {
+        stage('Testing') {
             agent { docker 'maven:3-alpine' }
             steps {
-                echo 'Hello, Maven'
-                sh 'mvn --version'
+                sh 'mvn test'
+            }
+        }
+        stage('Building') {
+            agent { docker 'maven:3-alpine' }
+            steps {
+                sh 'mvn clean package'
             }
         }
         stage('Example Test') {
