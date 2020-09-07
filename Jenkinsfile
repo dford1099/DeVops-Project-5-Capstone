@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Testing') {
             steps {
-                echo 'mvn clean test'
+                sh 'mvn clean test'
             }
         }
         stage('Linting') {
