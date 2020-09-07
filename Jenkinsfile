@@ -1,35 +1,19 @@
 pipeline {
-   agent {
-       docker {
-          image 'maven:3-alpine'
-          args '-v $HOME/.m2:/root/.m2'
-       }
-    }
+    agent none
     stages {
-
-        stage('Build') {
+        stage('Example Build') {
+            agent { docker 'maven:3-alpine' }
             steps {
                 echo 'Hello, Maven'
-            }
-        }
-
-        stage('Testing') {
-            steps {
-                sh 'mvn clean test'
-            }
-        }
-
-        stage('Linting') {
-            steps {
-                sh 'hadolint Dockerfile'
-            }
-        }
-
-        stage('Deployment') {
-            steps {
                 sh 'mvn --version'
             }
         }
-
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' }
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
+        }
     }
 }
