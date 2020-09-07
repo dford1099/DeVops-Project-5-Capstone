@@ -13,18 +13,18 @@ pipeline {
             }
         }
 
-        stage('Testing') {
-            agent { docker 'hadolint/hadolint' }
-            steps {
-                sh 'mvn clean test'
-            }
-        }
-
-        stage('Linting') {
-            steps {
-                sh 'hadolint Dockerfile'
-            }
-        }
+//         stage('Testing') {
+//             agent { docker 'hadolint/hadolint' }
+//             steps {
+//                 sh 'mvn clean test'
+//             }
+//         }
+//
+//         stage('Linting') {
+//             steps {
+//                 sh 'hadolint Dockerfile'
+//             }
+//         }
 
         stage('Deployment') {
             steps {
