@@ -1,5 +1,10 @@
 pipeline {
-    agent { docker 'hadolint/hadolint' }
+   agent {
+       docker {
+          image 'maven:3-alpine'
+          args '-v $HOME/.m2:/root/.m2'
+       }
+    }
     stages {
 
         stage('Build') {
@@ -9,12 +14,7 @@ pipeline {
         }
 
         stage('Testing') {
-            agent {
-                docker {
-                    image 'maven:3-alpine'
-                    args '-v $HOME/.m2:/root/.m2'
-                }
-            }
+            agent { docker 'hadolint/hadolint' }
             steps {
                 sh 'mvn clean test'
             }
