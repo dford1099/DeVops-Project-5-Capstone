@@ -1,1 +1,1 @@
-mvn --version
+ls -l
