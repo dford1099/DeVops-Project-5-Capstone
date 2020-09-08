@@ -1,1 +1,1 @@
-mvn test
+mvn test && mvn build

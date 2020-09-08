@@ -7,24 +7,10 @@ pipeline {
     }
     stages {
 
-        stage('Testing') {
+        stage('Testing and Building') {
             agent { docker 'maven:3-alpine' }
             steps {
                 sh './scripts/testing.sh'
-            }
-        }
-
-        stage('Building') {
-            agent { docker 'maven:3-alpine' }
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Executing Java') {
-            steps {
-                echo 'Hello, JDK'
-                sh 'docker --version'
             }
         }
 
@@ -32,6 +18,12 @@ pipeline {
             agent { docker 'hadolint/hadolint' }
             steps {
                 sh 'hadolint Dockerfile'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh './scripts/deploy.sh'
             }
         }
 
