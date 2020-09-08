@@ -1,1 +1,1 @@
-docker --version
+mvn --version
