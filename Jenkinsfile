@@ -22,6 +22,7 @@ pipeline {
         }
 
         stage('Deploy') {
+            agent { docker 'docker:latest' }
             steps {
                 sh './scripts/deploy.sh'
             }
