@@ -9,13 +9,14 @@ pipeline {
 
     stages {
 
-        stage('Testing and Building') {
+        stage('Testing and Building and deploy') {
             agent { docker 'maven:3-alpine' }
             steps {
                 sh './scripts/testing.sh'
+                sh './scripts/deploy.sh'
             }
         }
-
+/*
         stage('Linting Dockerfile') {
             agent { docker 'hadolint/hadolint' }
             steps {
@@ -29,6 +30,6 @@ pipeline {
                 sh './scripts/deploy.sh'
             }
         }
-
+*/
     }
 }
