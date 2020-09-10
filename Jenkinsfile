@@ -22,15 +22,9 @@ pipeline {
                 sh 'hadolint Dockerfile'
             }
         }
-         stage('Build') {
-         agent any
-            steps {
-                sh 'mvn clean install'
-            }
-         }
+       
         stage('Deploy') {
-        //    agent { docker 'docker:latest' }
-            agent any
+           agent { docker 'docker:latest' }
             steps {
                 sh './scripts/deploy.sh'
             }
