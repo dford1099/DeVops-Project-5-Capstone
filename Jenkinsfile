@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'ECR'
-    }
+    agent none
    /* environment {
       registry = '1111111111111.dkr.ecr.eu-central-1.amazonaws.com/myRepo'
       registryCredential = 'ID_OF_MY_AWS_JENKINS_CREDENTIAL'
