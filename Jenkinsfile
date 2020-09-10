@@ -22,7 +22,12 @@ pipeline {
                 sh 'hadolint Dockerfile'
             }
         }
-
+         stage('Build') {
+        
+            steps {
+                sh 'mvn clean install'
+            }
+         }
         stage('Deploy') {
         //    agent { docker 'docker:latest' }
             agent any
