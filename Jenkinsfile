@@ -23,7 +23,7 @@ pipeline {
             }
         }
          stage('Build') {
-        
+         agent any
             steps {
                 sh 'mvn clean install'
             }
