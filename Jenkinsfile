@@ -25,7 +25,9 @@ pipeline {
 
         stage('Deploy') {
         //    agent { docker 'docker:latest' }
-            agent { docker ... }
+            agent {
+        label 'ECR'
+    }
             steps {
                 sh './scripts/deploy.sh'
             }
