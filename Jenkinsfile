@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
    /* environment {
       registry = '1111111111111.dkr.ecr.eu-central-1.amazonaws.com/myRepo'
       registryCredential = 'ID_OF_MY_AWS_JENKINS_CREDENTIAL'
@@ -10,26 +10,26 @@ pipeline {
     stages {
 
         stage('Testing and Building and deploy') {
-            agent { docker 'maven:3-alpine' }
+           // agent { docker 'maven:3-alpine' }
             steps {
                 sh './scripts/testing.sh'
-                sh './scripts/deploy.sh'
+                
             }
         }
-/*
-        stage('Linting Dockerfile') {
+
+   /*     stage('Linting Dockerfile') {
             agent { docker 'hadolint/hadolint' }
             steps {
                 sh 'hadolint Dockerfile'
             }
         }
-       
+     */  
         stage('Deploy') {
-           agent { docker 'docker:latest' }
+          // agent { docker 'docker:latest' }
             steps {
                 sh './scripts/deploy.sh'
             }
         }
-*/
+
     }
 }
