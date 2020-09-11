@@ -26,10 +26,11 @@ pipeline {
             steps {
                 sh './scripts/testing.sh'
                 sh 'ls -l'
-                //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
-                 //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
+                sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
+                   archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                 sh "pwd"
                 echo "${WORKSPACE}"
+                sh './scripts/deploy.sh'
             }
         }
         
