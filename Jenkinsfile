@@ -12,10 +12,10 @@ pipeline {
         stage('Testing and Building and deploy') {
             agent { docker 'maven:3-alpine' }
             steps {
-                sh './scripts/testing.sh'
+               // sh './scripts/testing.sh'
                 sh 'ls -l'
-                sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
-                   archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
+              //  sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
+               //    archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                 sh "pwd"
                 echo "${WORKSPACE}"
             }
@@ -48,7 +48,7 @@ pipeline {
         stage('Linting Dockerfile') {
             agent { docker 'hadolint/hadolint' }
             steps {
-                sh 'hadolint Dockerfile'
+               // sh 'hadolint Dockerfile'
             }
         }
       
@@ -57,9 +57,10 @@ pipeline {
             agent any
             steps {
                 sh "pwd"
+                sh "docker image ls"
                 echo "${WORKSPACE}"
                 sh 'ls -l'
-                sh './scripts/deploy.sh'
+              //  sh './scripts/deploy.sh'
             }
         }
 
