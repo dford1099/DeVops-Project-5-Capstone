@@ -53,8 +53,8 @@ pipeline {
         }*/
       
         stage('Deploy') {
-           //agent { docker 'docker:latest' }
-            agent any
+           agent { docker 'docker:latest' }
+            //agent any
             steps {
                 sh "pwd"
                 sh "docker image ls"
