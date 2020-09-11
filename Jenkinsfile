@@ -14,10 +14,12 @@ pipeline {
             steps {
                 sh './scripts/testing.sh'
                 sh 'ls -l'
+                sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
+                   archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
             }
         }
         
-        stage('Copy file outside') {
+  /*      stage('Copy file outside') {
             agent any
             steps {
                   def image = docker.image("maven:3-alpine")
@@ -27,7 +29,7 @@ pipeline {
                    archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                  }
                 }
-        }
+        } */
 
         stage('Linting Dockerfile') {
             agent { docker 'hadolint/hadolint' }
