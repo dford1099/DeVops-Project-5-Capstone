@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 #RUN mkdir /usr/src /usr/src/app
 
-COPY ./target/customer-0.0.1-SNAPSHOT.jar /usr/src/app
+COPY ./customer-0.0.1-SNAPSHOT.jar /usr/src/app
 
 # Expose the port 
 EXPOSE 8080
