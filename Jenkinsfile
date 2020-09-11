@@ -16,6 +16,7 @@ pipeline {
                 sh 'ls -l'
                 sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
                    archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
+                sh "ls -l"
             }
         }
         
