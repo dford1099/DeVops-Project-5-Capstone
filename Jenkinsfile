@@ -12,7 +12,7 @@ pipeline {
         stage('Testing and Building and deploy') {
             agent { docker 'maven:3-alpine' }
             steps {
-                //sh './scripts/testing.sh'
+                sh './scripts/testing.sh'
                 sh 'ls -l'
                 //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
                  //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
@@ -24,7 +24,7 @@ pipeline {
         stage('Checking without docker pipeline') {
             agent any
             steps {
-                //sh './scripts/testing.sh'
+                sh './scripts/testing.sh'
                 sh 'ls -l'
                 //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
                  //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
