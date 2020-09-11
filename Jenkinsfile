@@ -9,7 +9,7 @@ pipeline {
 
     stages {
 
-        stage('Testing and Building and deploy') {
+     /*   stage('Testing and Building and deploy') {
             agent { docker 'maven:3-alpine' }
             steps {
                // sh './scripts/testing.sh'
@@ -19,9 +19,9 @@ pipeline {
                 sh "pwd"
                 echo "${WORKSPACE}"
             }
-        }
+        } */
         
-      /*  stage('Checking without docker pipeline') {
+        stage('Checking without docker pipeline') {
             agent any
             steps {
                 sh './scripts/testing.sh'
@@ -53,8 +53,8 @@ pipeline {
         }*/
       
         stage('Deploy') {
-           agent { docker 'docker:latest' }
-            //agent any
+          // agent { docker 'docker:latest' }
+            agent any
             steps {
                 sh "pwd"
                 sh "docker image ls"
