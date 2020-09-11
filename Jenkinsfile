@@ -43,14 +43,14 @@ pipeline {
                    archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                  }
                 }
-        } */
+        } 
 
         stage('Linting Dockerfile') {
             agent { docker 'hadolint/hadolint' }
             steps {
                // sh 'hadolint Dockerfile'
             }
-        }
+        }*/
       
         stage('Deploy') {
            //agent { docker 'docker:latest' }
