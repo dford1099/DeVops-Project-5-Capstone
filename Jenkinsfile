@@ -12,11 +12,24 @@ pipeline {
         stage('Testing and Building and deploy') {
             agent { docker 'maven:3-alpine' }
             steps {
-                sh './scripts/testing.sh'
+                //sh './scripts/testing.sh'
                 sh 'ls -l'
-                sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
-                   archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
-                sh "ls -l"
+                //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
+                 //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
+                sh "pwd"
+                echo $WORKSPACE
+            }
+        }
+        
+        stage('Checking without docker pipeline') {
+            agent any
+            steps {
+                //sh './scripts/testing.sh'
+                sh 'ls -l'
+                //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
+                 //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
+                sh "pwd"
+                echo $WORKSPACE
             }
         }
         
@@ -30,7 +43,7 @@ pipeline {
                    archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                  }
                 }
-        } */
+        } 
 
         stage('Linting Dockerfile') {
             agent { docker 'hadolint/hadolint' }
@@ -45,7 +58,7 @@ pipeline {
             steps {
                 sh './scripts/deploy.sh'
             }
-        }
+        }*/
 
     }
 }
