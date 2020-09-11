@@ -17,7 +17,7 @@ pipeline {
                 //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
                  //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                 sh "pwd"
-                echo $WORKSPACE
+                echo "${WORKSPACE}"
             }
         }
         
@@ -29,7 +29,7 @@ pipeline {
                 //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
                  //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                 sh "pwd"
-                echo $WORKSPACE
+                echo "${WORKSPACE}"
             }
         }
         
