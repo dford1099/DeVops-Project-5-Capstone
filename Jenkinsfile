@@ -14,14 +14,14 @@ pipeline {
             steps {
                 sh './scripts/testing.sh'
                 sh 'ls -l'
-                //sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
-                 //  archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
+                sh "cp ./target/customer-0.0.1-SNAPSHOT.jar ${WORKSPACE}"
+                   archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                 sh "pwd"
                 echo "${WORKSPACE}"
             }
         }
         
-        stage('Checking without docker pipeline') {
+      /*  stage('Checking without docker pipeline') {
             agent any
             steps {
                 sh './scripts/testing.sh'
@@ -43,7 +43,7 @@ pipeline {
                    archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                  }
                 }
-        } 
+        } */
 
         stage('Linting Dockerfile') {
             agent { docker 'hadolint/hadolint' }
@@ -56,9 +56,12 @@ pipeline {
            //agent { docker 'docker:latest' }
             agent any
             steps {
+                sh "pwd"
+                echo "${WORKSPACE}"
+                sh 'ls -l'
                 sh './scripts/deploy.sh'
             }
-        }*/
+        }
 
     }
 }
