@@ -34,8 +34,9 @@ pipeline {
                 script {
                   dockerImage = docker.build registry + ":$BUILD_NUMBER"
                
-                docker.withRegistry("https://" + registry, "ecr:us-west-2:" + registryCredential) {
+                  docker.withRegistry("https://" + registry, "ecr:us-west-2:" + registryCredential) {
                     dockerImage.push()
+                  }
                 }
             }
         }
