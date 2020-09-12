@@ -1,8 +1,8 @@
 pipeline {
     agent none
     environment {
-      registry = '1111111111111.dkr.ecr.eu-central-1.amazonaws.com/myRepo'
-      registryCredential = 'ID_OF_MY_AWS_JENKINS_CREDENTIAL'
+      registry = '156790592858.dkr.ecr.us-west-2.amazonaws.com/spring-tdd'
+      registryCredential = '13f73a3f-aa94-4ebf-b2c3-02a62c6ca3d3'
       dockerImage = ''
     } 
 
@@ -30,7 +30,13 @@ pipeline {
                    archiveArtifacts 'customer-0.0.1-SNAPSHOT.jar'
                 sh "pwd"
                 echo "${WORKSPACE}"
-                sh './scripts/deploy.sh'
+                //sh './scripts/deploy.sh'
+                script {
+                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
+               
+                docker.withRegistry("https://" + registry, "ecr:us-west-2:" + registryCredential) {
+                    dockerImage.push()
+                }
             }
         }
         
