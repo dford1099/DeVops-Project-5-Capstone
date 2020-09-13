@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy Image to K8s') {
             agent any
             steps {
-                sh 'kubectl apply -f deployment.yaml'
+                sh 'aws eks --region us-west-2 update-kubeconfig --name spring-tdd-eks'
             }
         }
     }
