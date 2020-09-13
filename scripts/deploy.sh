@@ -1,1 +1,1 @@
-aws eks --region us-west-2 update-kubeconfig --name spring-tdd-eks && kubectl apply -f ./deployment.yaml
+aws eks --region us-west-2 update-kubeconfig --name spring-tdd-eks && ls -l && kubectl apply -f deployment.yaml
