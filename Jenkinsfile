@@ -29,7 +29,6 @@ pipeline {
         stage('Deploy Image to K8s') {
             agent any
             steps {
-                sh 'aws eks --region us-west-2 update-kubeconfig --name spring-tdd-eks'
                 sh './scripts/deploy.sh'
             }
         }
