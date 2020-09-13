@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "spring-tdd.fullname" . }}-test-connection"
+  labels:
+    {{- include "spring-tdd.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "spring-tdd.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

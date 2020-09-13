@@ -25,5 +25,12 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy Image to K8s') {
+            agent any
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+            }
+        }
     }
 }
